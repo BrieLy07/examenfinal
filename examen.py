@@ -7,7 +7,7 @@ from langchain.chains import RetrievalQA
 import streamlit as st
 
 # Ingresa la key de openai
-os.environ['OPENAI_API_KEY'] = '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'
+os.environ['OPENAI_API_KEY'] = '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'
 # da un nombre predeterminado al pdf que se subira
 default_doc_name = 'doc.html'
 
@@ -16,7 +16,7 @@ default_doc_name = 'doc.html'
 def process_doc(
         path: str = 'Documento-de-examen-Grupo1.html',
         is_local: bool = True,
-        question: str = 'Cuál es la fecha de la ultima versión entregada?'
+        question: str = 'Cuál es el autor del documento?'
 ):
     # descarga el pdf y luego pypdf carga el documento y lo divide en fragmentos de texto
 
@@ -56,7 +56,7 @@ def client():
             f.write(uploader.getbuffer())
         st.success('HTML saved!!')
 
-    question = st.text_input('Genera un pequeño resumen de las primeras 5 paginas',
+    question = st.text_input('Quien es el autor del documento?',
                              placeholder='Give response about your HTML', disabled=not uploader)
 
     if st.button('Send Question'):
